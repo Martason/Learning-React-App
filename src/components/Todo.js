@@ -1,12 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
+import Button from "react-bootstrap/Button";
 
-const Todo = () => {
-  const [todos, setTodos] = useState([{ contet: "", IsCompletet: false }]);
+const Todo = ({ setTodolist }) => {
+  /*  const [todos, setTodos] = useState([props.currentTodolist]); */
   const inputRef = useRef();
+  /* 
+  console.log(todos); */
+  console.log(props.currentTodolist);
 
   useEffect(() => {
     inputRef.current.focus();
-  });
+  }, []);
 
   function handleKeyDown(e, i) {
     if (e.key === "Enter") {
@@ -53,28 +57,34 @@ const Todo = () => {
   }
 
   return (
-    <form className="todo-list">
-      <h2>Whats needs to bee done?</h2>
-      <ul>
-        {todos.map((todo, i) => (
-          <div className={`todo ${todo.isCompleted && "todo-is-completed"}`}>
+    <>
+      <form className="todo-list">
+        <h2>Whats needs to bee done?</h2>
+        <ul>
+          {todos.map((todo, i) => (
             <div
-              className={"checkbox"}
-              onClick={() => toggleTodoCompleteAtIndex(i)}
+              key={i}
+              className={`todo ${todo.isCompleted && "todo-is-completed"}`}
             >
-              {todo.isCompleted && <span>&#x2714;</span>}
+              <div
+                className={"checkbox"}
+                onClick={() => toggleTodoCompleteAtIndex(i)}
+              >
+                {todo.isCompleted && <span>&#x2714;</span>}
+              </div>
+              <input
+                ref={inputRef}
+                type="text"
+                value={todo.content}
+                onKeyDown={(e) => handleKeyDown(e, i)}
+                onChange={(e) => updateTodoAtIndex(e, i)}
+              />
             </div>
-            <input
-              ref={inputRef}
-              type="text"
-              value={todo.content}
-              onKeyDown={(e) => handleKeyDown(e, i)}
-              onChange={(e) => updateTodoAtIndex(e, i)}
-            />
-          </div>
-        ))}
-      </ul>
-    </form>
+          ))}
+        </ul>
+        <Button>Save</Button>
+      </form>
+    </>
   );
 };
 

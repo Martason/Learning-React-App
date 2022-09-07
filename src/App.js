@@ -1,20 +1,27 @@
 import "./App.css";
 import React from "react";
-import Todo from "./pages/Todo";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import TheLight from "./pages/Thelight";
+import { Todo, Home, TheLight, About } from "./pages";
 import Navbar from "./components/Navbar";
+import { useState } from "react";
 import Container from "react-bootstrap/Container";
 
 function App() {
+  const [todolist, setTodolist] = useState([
+    { contet: "", IsCompletet: false },
+  ]);
+  console.log(todolist);
+
+  /*   const updateTodolist = (newTodolist) => {
+    setTodolist(newTodolist);
+  }; */
+  //TODO route vs. switch case
   let page;
   switch (window.location.pathname) {
     case "/":
       page = <Home />;
       break;
     case "/Todo":
-      page = <Todo />;
+      page = <Todo currentTodolist={todolist} {...{ setTodolist }} />;
       break;
     case "/TheLight":
       page = <TheLight />;
