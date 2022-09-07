@@ -1,12 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import Button from "react-bootstrap/Button";
 
-const Todo = ({ setTodolist }) => {
-  /*  const [todos, setTodos] = useState([props.currentTodolist]); */
+const Todo = () => {
+  const [todos, setTodos] = useState([{ content: "", isCompleted: false }]);
   const inputRef = useRef();
-  /* 
-  console.log(todos); */
-  console.log(props.currentTodolist);
 
   useEffect(() => {
     inputRef.current.focus();
