@@ -1,17 +1,23 @@
-body {
-  /* ? */
 
+*{
+/*   border: pink 2px solid; */
 }
-
 
 .app {
   padding-top: 2rem;
   background-color: #061c47;
   color: #fff;
-  min-height: 100vh;
- 
- 
+  min-height: 100vh; 
 }
+
+.component{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
 .logo {
   animation: App-logo-spin infinite 20s linear;
   height: 10vmin;

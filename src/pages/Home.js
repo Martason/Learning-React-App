@@ -1,21 +1,23 @@
-import { Counter, Car, Ask } from "../components";
-import Container from "react-bootstrap/Container";
+import { Ask } from "../components";
 import { useState } from "react";
 
 export default function Home() {
-  const [name, setName] = useState(""); // för appen
+  const [name, setName] = useState("");
 
   const getName = (name) => {
     setName(name);
   };
 
   return (
-    <Container>
-      <h1>HOME</h1>
-      <Counter></Counter>
-      <Car carColor="red"></Car>
+    <>
+      <h1>Hello</h1>
+      <p>
+        My name is Märta and this webbapp is where displays all the cool react
+        skills I learnt
+      </p>
       <Ask question="Whats your name?" setAnswerFunc={getName}></Ask>
-      {name !== "" ? <p>Hello {name}</p> : <p></p>}
-    </Container>
+      <br></br>
+      {name !== "" ? <h2>Hello {name}!</h2> : <p></p>}
+    </>
   );
 }

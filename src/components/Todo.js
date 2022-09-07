@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
-import Button from "react-bootstrap/Button";
+import React, { useEffect } from "react";
 
-const Todo = () => {
-  const [todos, setTodos] = useState([{ content: "", isCompleted: false }]);
-  const inputRef = useRef();
+const Todo = (todos, setTodos) => {
+  /* const [todos, setTodos] = useState([{ content: "", isCompleted: false }]); */
 
   useEffect(() => {
-    inputRef.current.focus();
+    createTodoAtIndex(null, todos.length - 1);
   }, []);
 
   function handleKeyDown(e, i) {
@@ -54,35 +52,54 @@ const Todo = () => {
   }
 
   return (
-    <>
-      <form className="todo-list">
-        <h2>Whats needs to bee done?</h2>
-        <ul>
-          {todos.map((todo, i) => (
+    <form className="todo-list component-frame">
+      <ul>
+        {todos.map((todo, index) => (
+          <div
+            key={`todo-${index}`}
+            className={`todo ${todo.isCompleted && "todo-is-completed"}`}
+          >
             <div
-              key={i}
-              className={`todo ${todo.isCompleted && "todo-is-completed"}`}
+              className={"checkbox"}
+              onClick={() => toggleTodoCompleteAtIndex(index)}
             >
-              <div
-                className={"checkbox"}
-                onClick={() => toggleTodoCompleteAtIndex(i)}
-              >
-                {todo.isCompleted && <span>&#x2714;</span>}
-              </div>
-              <input
-                ref={inputRef}
-                type="text"
-                value={todo.content}
-                onKeyDown={(e) => handleKeyDown(e, i)}
-                onChange={(e) => updateTodoAtIndex(e, i)}
-              />
+              {todo.isCompleted && <span>&#x2714;</span>}
             </div>
-          ))}
-        </ul>
-        <Button>Save</Button>
-      </form>
-    </>
+            <input
+              type="text"
+              value={todo.content}
+              onKeyDown={(event) => handleKeyDown(event, index)}
+              onChange={(event) => updateTodoAtIndex(event, index)}
+            />
+          </div>
+        ))}
+      </ul>
+    </form>
   );
 };
 
-export default Todo;
+export default Todo; /* 
+<form className="todo-list">
+<h2>Whats needs to bee done?</h2>
+<ul>
+  {todos.map((todo, i) => (
+    <div
+      key={i}
+      className={`todo ${todo.isCompleted && "todo-is-completed"}`}
+    >
+      <div
+        className={"checkbox"}
+        onClick={() => toggleTodoCompleteAtIndex(i)}
+      >
+        {todo.isCompleted && <span>&#x2714;</span>}
+      </div>
+      <input
+        type="text"
+        value={todo.content}
+        onKeyDown={(e) => handleKeyDown(e, i)}
+        onChange={(e) => updateTodoAtIndex(e, i)}
+      />
+    </div>
+  ))}
+</ul>
+</form> */
