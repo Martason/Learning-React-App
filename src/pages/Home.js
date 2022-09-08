@@ -1,18 +1,11 @@
 import { Ask } from "../components";
-import { useState } from "react";
 
-export default function Home() {
-  const [name, setName] = useState("");
-
-  const getName = (name) => {
-    setName(name);
-  };
-
+export default function Home({ name, setName }) {
   return (
     <>
       <h1>Hello!</h1>
 
-      <Ask question="Whats your name?" setAnswerFunc={getName}></Ask>
+      <Ask question="Whats your name?" setAnswerFunc={setName}></Ask>
       <br></br>
       {name !== "" ? (
         <>

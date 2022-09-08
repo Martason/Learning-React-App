@@ -4,18 +4,15 @@ export default function Counter() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    // Update the document title using the browser API
     document.title = `You clicked ${count} times`;
   });
-
-  useEffect(() => {});
   return (
     <>
       <p>You clicked {count} times</p>
       <br />
       <button onClick={() => setCount(count + 1)}>Click me</button>
       <br />
-      Can you spot the two useEffecs?
+      Can you spot the useEffecs?
     </>
   );
 }

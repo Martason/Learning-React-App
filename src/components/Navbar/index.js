@@ -4,7 +4,6 @@ import logo from "./logo.svg";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
-//<img src={logo} className="logo" alt="logo" />;
 
 const nav = () => {
   return (
@@ -12,7 +11,7 @@ const nav = () => {
       <Navbar bg="" variant="dark">
         <Container>
           <Nav>
-            <Link classname="nav-link" to="/">
+            <Link className="nav-link" to="/">
               <img src={logo} className="logo" alt="logo" />
             </Link>
             <Link className="nav-link" to="/Todo">

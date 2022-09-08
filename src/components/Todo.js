@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 
-const Todo = (todos, setTodos) => {
+const Todo = ({ todos, setTodos }) => {
   /* const [todos, setTodos] = useState([{ content: "", isCompleted: false }]); */
-
+  console.log(todos);
   useEffect(() => {
     createTodoAtIndex(null, todos.length - 1);
   }, []);
-
+  console.log(todos);
   function handleKeyDown(e, i) {
     if (e.key === "Enter") {
       createTodoAtIndex(e, i);

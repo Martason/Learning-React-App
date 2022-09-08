@@ -1,9 +1,10 @@
 import Todo from "../components/Todo";
 
-export default function Index() {
+export default function Index({ todos, setTodos }) {
   return (
     <>
-      <Todo />
+      <Todo todos={todos} setTodos={setTodos} />
     </>
   );
 }
+//TODO remove this
