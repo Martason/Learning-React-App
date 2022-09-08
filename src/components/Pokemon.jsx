@@ -43,7 +43,7 @@ const About = () => {
       </p>
       <h1 style={{ color: "pink" }}>{pokemon.name}!</h1>
       <Image fluid src={pokemon.image}></Image>
-      <Table responsive variant="dark" striped bordered hover size="sm">
+      <Table bg="" responsive variant="dark" striped bordered hover size="sm">
         <thead>
           <tr>
             <th>Height:</th>
