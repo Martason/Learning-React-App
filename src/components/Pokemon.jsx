@@ -19,7 +19,7 @@ const About = () => {
       const data = await response.json();
 
       const pokemonObj = {
-        name: data.name,
+        name: data.name.charAt(0).toUpperCase() + data.name.slice(1),
         height: data.height,
         weight: data.weight,
         image: data.sprites.other["official-artwork"].front_default,
@@ -32,10 +32,6 @@ const About = () => {
     fetchData();
   }, []);
 
-  const firstLetterToUpper = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  };
-  //TODO funkar inte
   return (
     <>
       <p>

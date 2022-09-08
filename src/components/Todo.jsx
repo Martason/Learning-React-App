@@ -1,11 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 const Todo = ({ todos, setTodos }) => {
-  
+
+  const textInput = useRef(null);
+  console.log(todos.length)
+
   useEffect(() => {
-    createTodoAtIndex(null, todos.length - 1);
+    if(todos.length === 0){
+      createTodoAtIndex(todos.length - 1);
+    } 
+    else{
+    setTimeout(() => {
+      document.forms[0].elements[todos.length - 1].focus();
+    }, 0)}
   }, []);
-  console.log(todos);
+
   function handleKeyDown(e, i) {
     if (e.key === "Enter") {
       createTodoAtIndex(e, i);
@@ -16,8 +25,8 @@ const Todo = ({ todos, setTodos }) => {
     }
   }
 
-  function createTodoAtIndex(e, i) {
-    const newTodos = [...todos];
+  function createTodoAtIndex(i) {
+        const newTodos = [...todos];
     newTodos.splice(i + 1, 0, {
       content: "",
       isCompleted: false,
@@ -69,6 +78,7 @@ const Todo = ({ todos, setTodos }) => {
               <input
                 type="text"
                 value={todo.content}
+                ref={textInput}
                 onKeyDown={(event) => handleKeyDown(event, index)}
                 onChange={(event) => updateTodoAtIndex(event, index)}
               />
