@@ -41,10 +41,11 @@ const About = () => {
       <p>
         If you want to know more about me check out my gitHub and Linked in page
         <br />
+        On this site you vill learn more about the awesome pokemon...
         <br />
-        <h3>On this site you vill learn more about the awesome pokemon...</h3>
+        <br />
       </p>
-      <h1>{pokemon.name}</h1>
+      <h1 style={{ color: "pink" }}>{pokemon.name}!</h1>
       <Image fluid src={pokemon.image}></Image>
       <Table responsive variant="dark" striped bordered hover size="sm">
         <thead>
@@ -61,7 +62,7 @@ const About = () => {
             <td>{pokemon.type}</td>
           </tr>
           <tr>
-            <th>bilities:</th>
+            <th>Abilities:</th>
             <td>{pokemon.abilities}</td>
           </tr>
           <tr>

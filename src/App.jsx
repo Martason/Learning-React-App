@@ -1,11 +1,10 @@
 import "./App.css";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Todo, Home, TheLight, About } from "./pages";
 import Navbar from "./components/Navbar";
+import { Todo, Pokemon, TheLight, Home } from "./components";
 import { useState } from "react";
 
-//TODO lift state
 function App() {
   const [todos, setTodos] = useState([]);
   const [name, setName] = useState([]);
@@ -21,7 +20,7 @@ function App() {
             element={<Todo todos={todos} setTodos={setTodos} />}
           />
           <Route path="/TheLight" element={<TheLight />} />
-          <Route path="/About" element={<About />} />
+          <Route path="/PokemonInfo" element={<Pokemon />} />
         </Routes>
       </div>
     </div>

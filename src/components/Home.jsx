@@ -1,6 +1,6 @@
-import { Ask } from "../components";
+import { Ask } from ".";
 
-export default function Home({ name, setName }) {
+const Home = ({ name, setName }) => {
   return (
     <>
       <h1>Hello!</h1>
@@ -24,4 +24,6 @@ export default function Home({ name, setName }) {
       )}
     </>
   );
-}
+};
+
+export default Home;

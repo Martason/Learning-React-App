@@ -1,7 +1,7 @@
-import { Ask, Counter } from "../components";
+import { Ask, Counter } from ".";
 import { useState } from "react";
 
-export default function Index() {
+const TheLight = () => {
   const [lamp, setLamp] = useState("");
 
   const getLamp = (lamp) => {
@@ -33,4 +33,5 @@ export default function Index() {
       )}
     </>
   );
-}
+};
+export default TheLight;

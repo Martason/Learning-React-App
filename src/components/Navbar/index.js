@@ -20,8 +20,8 @@ const nav = () => {
             <Link className="nav-link" to="/TheLight">
               The Light
             </Link>
-            <Link className="nav-link" to="/About">
-              About
+            <Link className="nav-link" to="/PokemonInfo">
+              Pokemon Info
             </Link>
           </Nav>
         </Container>
