@@ -3,8 +3,9 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { Todo, Home, TheLight, About } from "./pages";
 import Navbar from "./components/Navbar";
-import useState from "react";
+import { useState } from "react";
 
+//TODO lift state
 function App() {
   const [todos, setTodos] = useState([]);
   return (

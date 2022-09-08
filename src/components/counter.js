@@ -12,7 +12,10 @@ export default function Counter() {
   return (
     <>
       <p>You clicked {count} times</p>
+      <br />
       <button onClick={() => setCount(count + 1)}>Click me</button>
+      <br />
+      Can you spot the two useEffecs?
     </>
   );
 }

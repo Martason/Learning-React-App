@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 
 const Ask = ({question, setAnswerFunc}) => {
-    const [answer, setAnswer] = useState(""); //för input
+    const [answer, setAnswer] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -12,11 +12,10 @@ const Ask = ({question, setAnswerFunc}) => {
 
   return (
     <>
-    <h2>{question}</h2>
+    <h3>{question}</h3>
     <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>{question}</Form.Label>
-        <Form.Control type="text" placeholder="" onChange={(e) => setAnswer(e.target.value)}  value={answer} />
+        <Form.Control autoComplete='off' type="text" placeholder="" onChange={(e) => setAnswer(e.target.value)}  value={answer} />
         <Form.Text className="text-muted">
         </Form.Text>
       </Form.Group>

@@ -11,7 +11,7 @@ const nav = () => {
     <>
       <Navbar bg="" variant="dark">
         <Container>
-          <Nav className="me-auto">
+          <Nav>
             <Link classname="nav-link" to="/">
               <img src={logo} className="logo" alt="logo" />
             </Link>

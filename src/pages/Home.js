@@ -10,14 +10,25 @@ export default function Home() {
 
   return (
     <>
-      <h1>Hello</h1>
-      <p>
-        My name is Märta and this webbapp is where displays all the cool react
-        skills I learnt
-      </p>
+      <h1>Hello!</h1>
+
       <Ask question="Whats your name?" setAnswerFunc={getName}></Ask>
       <br></br>
-      {name !== "" ? <h2>Hello {name}!</h2> : <p></p>}
+      {name !== "" ? (
+        <>
+          <h3> Hi {name}!</h3>
+          <p>
+            My name is Märta and on this webbapp I crash and burn to learn
+            react. It's quite the mess I know, but hopefully I learn some cool
+            trixs to bring to my next, more coherent project
+            <br></br>
+            <br></br>
+            Please have a look around
+          </p>
+        </>
+      ) : (
+        <p></p>
+      )}
     </>
   );
 }

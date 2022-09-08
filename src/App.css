@@ -1,6 +1,5 @@
 
 *{
-/*   border: pink 2px solid; */
 }
 
 .app {
@@ -16,6 +15,25 @@
   justify-content: center;
   flex-direction: column;
   text-align: center;
+  padding: 30px;
+}
+
+
+  .btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #fd0db8;
+    --bs-btn-border-color: #c32c8e;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #a6c0e5;
+    --bs-btn-hover-border-color: #0a58ca;
+    --bs-btn-focus-shadow-rgb: 49,132,253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #0a58ca;
+    --bs-btn-active-border-color: #0a53be;
+    --bs-btn-active-shadow: inset 0 3px 5pxrgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #0d6efd;
+    --bs-btn-disabled-border-color: #0d6efd;
 }
 
 .logo {
