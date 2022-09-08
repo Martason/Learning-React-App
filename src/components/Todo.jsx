@@ -16,8 +16,10 @@ const Todo = ({ todos, setTodos }) => {
   }, []);
 
   function handleKeyDown(e, i) {
-    if (e.key === "Enter") {
-      createTodoAtIndex(e, i);
+    console.log(todos)
+    
+    if (e.key === "Enter" && todos[i].content !== "") {
+      createTodoAtIndex(i);
     }
     if (e.key === "Backspace" && todos[i].content === "") {
       e.preventDefault();
@@ -26,7 +28,7 @@ const Todo = ({ todos, setTodos }) => {
   }
 
   function createTodoAtIndex(i) {
-        const newTodos = [...todos];
+    const newTodos = [...todos];
     newTodos.splice(i + 1, 0, {
       content: "",
       isCompleted: false,
