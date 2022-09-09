@@ -2,12 +2,13 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 
-const Ask = ({question, setAnswerFunc}) => {
-    const [answer, setAnswer] = useState("");
+const MyForm = ({question, placeholder, setAnswer}) => {
+    const [submit, setSubmit] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        setAnswerFunc(answer)
+        setAnswer(submit)
+        setSubmit("")
     }
 
   return (
@@ -15,7 +16,13 @@ const Ask = ({question, setAnswerFunc}) => {
     <h3>{question}</h3>
     <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Control autoComplete='off' type="text" placeholder="" onChange={(e) => setAnswer(e.target.value)}  value={answer} />
+        <Form.Control 
+        autoComplete='off' 
+        type="text" 
+        placeholder={placeholder} 
+        onChange={(e) => setSubmit(e.target.value)} 
+        value={submit}
+        />
         <Form.Text className="text-muted">
         </Form.Text>
       </Form.Group>
@@ -30,4 +37,4 @@ const Ask = ({question, setAnswerFunc}) => {
   );
 }
 
-export default Ask;
+export default MyForm;

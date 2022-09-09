@@ -63,7 +63,8 @@ const Todo = ({ todos, setTodos }) => {
 
   return (
     <>
-      <h2>Whats needs to bee done?</h2>
+    <h1>Todolist</h1>
+      <h4>Whats needs to bee done?</h4>
       <form className="todo-list component-frame">
         <ul>
           {todos.map((todo, index) => (
@@ -80,7 +81,6 @@ const Todo = ({ todos, setTodos }) => {
               <input
                 type="text"
                 value={todo.content}
-                ref={textInput}
                 onKeyDown={(event) => handleKeyDown(event, index)}
                 onChange={(event) => updateTodoAtIndex(event, index)}
               />

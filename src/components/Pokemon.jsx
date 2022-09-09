@@ -1,19 +1,24 @@
 import { useState, useEffect } from "react";
+import MyForm from "./Form";
 import Table from "react-bootstrap/Table";
 import Image from "react-bootstrap/Image";
+import Container from "react-bootstrap/Container";
 
 const About = () => {
   const [pokemon, setPokemon] = useState([]);
-  const pokemonName = "vivillon";
+  //TODO använda detta. 
+  const [searchPokemon, setPokemonName] = useState("vivillon");
+
 
   // 'async' shouldn't be used in the useEffect callback function because these
   //callbacks are synchronous to prevent race conditions.
   //We need to put the async function inside.
 
   useEffect(() => {
+    console.log(searchPokemon)
     const fetchData = async () => {
       const response = await fetch(
-        "https://pokeapi.co/api/v2/pokemon/vivillon"
+        `https://pokeapi.co/api/v2/pokemon/${searchPokemon}`
       );
 
       const data = await response.json();
@@ -30,20 +35,19 @@ const About = () => {
       setPokemon(pokemonObj);
     };
     fetchData();
-  }, []);
+  }, [searchPokemon]);
 
   return (
     <>
-      <p>
-        If you want to know more about me check out my gitHub and Linked in page
-        <br />
-        On this site you vill learn more about the awesome pokemon...
-        <br />
-        <br />
-      </p>
+      
+      <MyForm 
+      question={"Enter a pokemonname:"} 
+      placeholder = "Ex: Pikachu or Ditto"
+      setAnswer={setPokemonName}></MyForm>
+      <br/>
       <h1 style={{ color: "pink" }}>{pokemon.name}!</h1>
       <Image fluid src={pokemon.image}></Image>
-      <Table bg="" responsive variant="dark" striped bordered hover size="sm">
+      <Table style={{ color: "white" }} bg="" responsive bordered size="sm">
         <thead>
           <tr>
             <th>Height:</th>

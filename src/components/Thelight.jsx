@@ -1,4 +1,4 @@
-import { Ask, Counter } from ".";
+import { MyForm, Counter } from ".";
 import { useState } from "react";
 
 const TheLight = () => {
@@ -9,29 +9,62 @@ const TheLight = () => {
   };
 
   return (
-    <>
-      <h1>The Light</h1>
+    <>    
+    <h1>The Light</h1>
       <br></br>
+    {lamp !== "" ? (
+      <p>
+        <h3>The {lamp} now lights up the lights up the room</h3>
+        <br />
+        <br />
+        In the future I would like to hook this up with my arduino<br/> and actually let the user light a
+        lamp in my house.
+        <br />
+        <br />
+        But have fun with this counter component in the meantime
+        <Counter />
+      </p>
+    ) : (
+      <>
+      <MyForm 
+      question="Vilken lampa vill du tända?" 
+      placeholder="Ex Kitchenlamp"
+      setAnswer={getLamp}></MyForm>
+      <br></br>
+      </>
+    )}
+      
 
-      <Ask question="Vilken lampa vill du tända?" setAnswerFunc={getLamp}></Ask>
-      <br></br>
-      {lamp !== "" ? (
-        <p>
-          {lamp} är nu tänd
-          <br />
-          <br />
-          In the future I want to build a webapp that alows the user to light a
-          lamp in my house. But I struggle to find the place and time to play
-          aorund with my arduino.
-          <br />
-          <br />
-          Please, know yourself out with this fun component in the meantime
-          <Counter />
-        </p>
-      ) : (
-        <p></p>
-      )}
+      
+      
     </>
   );
 };
 export default TheLight;
+/* (
+  <>
+    <h1>The Light</h1>
+    <br></br>
+
+    <MyForm 
+    question="Vilken lampa vill du tända?" 
+    placeholder="Ex Kitchenlamp"
+    setAnswer={getLamp}></MyForm>
+    <br></br>
+    {lamp !== "" ? (
+      <p>
+        <h3>The {lamp} now lights up the lit</h3>
+        <br />
+        <br />
+        In the future I would like to hook this up with my arduino<br/> and actually let the user light a
+        lamp in my house.
+        <br />
+        <br />
+        But have fun with this counter component in the meantime
+        <Counter />
+      </p>
+    ) : (
+      <p></p>
+    )}
+  </>
+); */

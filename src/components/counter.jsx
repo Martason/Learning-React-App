@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Button from "react-bootstrap/Button"
 
 export default function Counter() {
   const [count, setCount] = useState(0);
@@ -10,7 +11,7 @@ export default function Counter() {
     <>
       <p>You clicked {count} times</p>
       <br />
-      <button onClick={() => setCount(count + 1)}>Click me</button>
+      <Button onClick={() => setCount(count + 1)}>Click me</Button>
       <br />
       Can you spot the useEffecs?
     </>
