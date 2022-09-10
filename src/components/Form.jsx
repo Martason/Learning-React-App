@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 
-const MyForm = ({question, placeholder, setAnswer}) => {
+const MyForm = ({question, setAnswer, placeholder, buttonText}) => {
     const [submit, setSubmit] = useState("");
 
     const handleSubmit = (e) => {

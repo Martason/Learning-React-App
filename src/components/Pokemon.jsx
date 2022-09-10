@@ -2,23 +2,20 @@ import { useState, useEffect } from "react";
 import MyForm from "./Form";
 import Table from "react-bootstrap/Table";
 import Image from "react-bootstrap/Image";
-import Container from "react-bootstrap/Container";
+//TODO Present 404 to the user in a neat way
+//TODO use the MUI autosearch function
 
 const About = () => {
   const [pokemon, setPokemon] = useState([]);
-  //TODO använda detta. 
-  const [searchPokemon, setPokemonName] = useState("vivillon");
-
-
-  // 'async' shouldn't be used in the useEffect callback function because these
-  //callbacks are synchronous to prevent race conditions.
-  //We need to put the async function inside.
+  const [nameToSearch, setNameToSeach] = useState("");
 
   useEffect(() => {
-    console.log(searchPokemon)
+
+    setNameToSeach(nameToSearch.toLowerCase())
+
     const fetchData = async () => {
       const response = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${searchPokemon}`
+        `https://pokeapi.co/api/v2/pokemon/${nameToSearch}`
       );
 
       const data = await response.json();
@@ -35,17 +32,25 @@ const About = () => {
       setPokemon(pokemonObj);
     };
     fetchData();
-  }, [searchPokemon]);
+  }, [nameToSearch]);
 
   return (
     <>
-      
+    <h1>Pokemon Info</h1>
+{nameToSearch == ""?(
+  <>
+    
+    <p>Here you can search the PokeApi database to get info on your favorite pokemon.<br/>
+    Enter the name of the pokemon you wish to look up. </p>
       <MyForm 
-      question={"Enter a pokemonname:"} 
       placeholder = "Ex: Pikachu or Ditto"
-      setAnswer={setPokemonName}></MyForm>
+      setAnswer={setNameToSeach}></MyForm>
       <br/>
-      <h1 style={{ color: "pink" }}>{pokemon.name}!</h1>
+      
+    </>)
+    :
+    (<>
+  <h1 style={{ color: "pink" }}>{pokemon.name}!</h1>
       <Image fluid src={pokemon.image}></Image>
       <Table style={{ color: "white" }} bg="" responsive bordered size="sm">
         <thead>
@@ -71,8 +76,10 @@ const About = () => {
           </tr>
         </thead>
       </Table>
+      </>)
+    }
     </>
-  );
+  )
 };
 
 export default About;

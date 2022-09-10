@@ -16,8 +16,7 @@ const Todo = ({ todos, setTodos }) => {
   }, []);
 
   function handleKeyDown(e, i) {
-    console.log(todos)
-    
+   
     if (e.key === "Enter" && todos[i].content !== "") {
       createTodoAtIndex(i);
     }
