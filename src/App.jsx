@@ -1,9 +1,11 @@
-import "./App.css";
+
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { Todo, Pokemon, TheLight, Home } from "./components";
 import { useState } from "react";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [todos, setTodos] = useState([]);

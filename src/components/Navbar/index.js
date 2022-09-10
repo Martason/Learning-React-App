@@ -15,7 +15,7 @@ const nav = () => {
             <Link className="nav-link" to="/">
               <img src={logo} className="logo" alt="logo" />
             </Link>
-            <Nav style={{ marginLeft: "30px" }} className="ml-auto">
+            <Nav className="ml-auto">
               <Link className="nav-link" to="/Todo">
                 Todo
               </Link>

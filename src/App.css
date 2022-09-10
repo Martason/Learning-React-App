@@ -1,6 +1,6 @@
 
 *{
- /*  border: pink solid 1px; */
+
 }
 
 .app {
@@ -18,16 +18,10 @@
   text-align: center;
   padding: 30px;
 }
-/* 
-TODO 
-Tror att detta beror på problemet med att child 
-componentes stylesheet blir "det sista" och därmed 
-först i hirarkin? 
- */
  .table {
 --bs-table-color: #fff;
 --bs-table-bg: rgb(0 0 0 / 8%);
---bs-table-border-color: #3c093b;
+--bs-table-border-color: #553954;
 --bs-table-striped-bg: #2c3034;
 --bs-table-striped-color: #fff;
 --bs-table-active-bg: #373b3e;

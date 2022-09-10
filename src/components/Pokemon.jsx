@@ -4,6 +4,7 @@ import Table from "react-bootstrap/Table";
 import Image from "react-bootstrap/Image";
 //TODO Present 404 to the user in a neat way
 //TODO use the MUI autosearch function
+//TODO * Hur göra det snyggare? 
 
 const About = () => {
   const [pokemon, setPokemon] = useState([]);
@@ -20,13 +21,15 @@ const About = () => {
 
       const data = await response.json();
 
+      const arr2 = data.abilities.map((arr) => arr.ability.name)//TODO *
+
       const pokemonObj = {
-        name: data.name.charAt(0).toUpperCase() + data.name.slice(1),
+        name: data.name.charAt(0).toUpperCase() + data.name.slice(1),//TODO *
         height: data.height,
         weight: data.weight,
         image: data.sprites.other["official-artwork"].front_default,
-        type: data.types.map((arr) => arr.type.name).join(" / "),
-        abilities: data.abilities.map((arr) => arr.ability.name).join(", "),
+        type: data.types.map((arr) => arr.type.name).join(" / "),//TODO *
+        abilities: arr2.map((item) => item.charAt(0).toUpperCase() + item.slice(1)).join(", "), //TODO *
         base_experience: data.base_experience,
       };
       setPokemon(pokemonObj);
@@ -37,7 +40,7 @@ const About = () => {
   return (
     <>
     <h1>Pokemon Info</h1>
-{nameToSearch == ""?(
+{nameToSearch === ""?(
   <>
     
     <p>Here you can search the PokeApi database to get info on your favorite pokemon.<br/>
