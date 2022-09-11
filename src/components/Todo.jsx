@@ -1,10 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 
 const Todo = ({ todos, setTodos }) => {
-
-  const textInput = useRef(null);
-  console.log(todos.length)
-
   useEffect(() => {
     if(todos.length === 0){
       createTodoAtIndex(todos.length - 1);
