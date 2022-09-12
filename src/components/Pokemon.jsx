@@ -129,7 +129,7 @@ const PokemonInfo = () => {
       Search</Button>
   
       <br/>
-  <h1 style={{ color: "pink" }}>{pokemon.name}!</h1>
+  <h1>{pokemon.name}!</h1>
       <Image fluid src={pokemon.image}></Image>
       <Table style={{ color: "white" }} bg="" responsive bordered size="sm">
         <thead>
