@@ -3,46 +3,16 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { Todo, PokemonInfo, TheLight, Home } from "./components";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [todos, setTodos] = useState([]);
   const [name, setName] = useState([]);
-  /* const [pokemonNames, setPokemonNames] = useState([]); */
-
- /*  useEffect(() => {
-    const fetchPokemonNames = async () => {
-      let url;
-      let count;
   
-      url = new URL("https://pokeapi.co");
-      url.pathname = "/api/v2/pokemon";
-  
-      const countData = await fetch(url).then((response) =>
-        response.json()
-      );
-
-      count = countData.count;
-      url.searchParams.set("limit", count);
-  
-      const pokemonData = await fetch(url).then((response) =>
-        response.json()
-      );
-  console.log(pokemonData)
-  const arr = pokemonData.results.map((item) => item.name)
-  console.log(arr)
-     setPokemonNames(arr)
-    }
-
-    fetchPokemonNames()
-  }, []) */
-
   return (
-  
     <div className="app">
-      
       <Navbar />
       <div className="component">
         <Routes>
@@ -60,8 +30,7 @@ function App() {
             element={<TheLight />} 
           />
           <Route path="/PokemonInfo" 
-            element={<PokemonInfo
-            /* pokemonNames = {pokemonNames} */ />} 
+            element={<PokemonInfo/>} 
           />
         </Routes>
       </div>

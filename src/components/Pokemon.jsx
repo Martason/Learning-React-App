@@ -1,21 +1,29 @@
+
+
 import React, { useState, useEffect } from "react";
-import MyForm from "./Form";
 import Table from "react-bootstrap/Table";
 import Image from "react-bootstrap/Image";
-import {Stack, Autocomplete, TextField} from '@mui/material'
-import {Box} from "@mui/system"
+import {Autocomplete, TextField} from '@mui/material'
+import Button from 'react-bootstrap/Button';
 
-//TODO Present 404 to the user in a neat way
-//TODO use the MUI autosearch function
-//TODO * Hur göra det snyggare? 
+import MyAutocomplete from "./MyAutocomplete";
+{/* <MyAutocomplete
+array={pokemonNames}
+handleSubmit={setNameToSeach}
+/> */}
+
+//TODO style
+//TODO * cleaner code?
+// Util .charAt(0).toUpperCase() + data.name.slice(1)
+//TODO move to another component
 
 const PokemonInfo = () => {
   const [pokemon, setPokemon] = useState([]);
   const [nameToSearch, setNameToSeach] = useState("");
   const [searchOk, setSearchOk] = useState(true);
+
   const [pokemonNames, setPokemonNames] = useState([]);
   const [value, setValue] = useState("");
-  console.log(value)
 
 
   useEffect(() => {
@@ -65,49 +73,61 @@ const PokemonInfo = () => {
       const pokemonData = await fetch(url).then((response) =>
         response.json()
       );
-  console.log(pokemonData)
-  const arr = pokemonData.results.map((item) => item.name)
-  console.log(arr)
+
+  const arr = pokemonData.results.map((item) => item.name.charAt(0).toUpperCase() + item.name.slice(1))//TODO * move to app.js? how?
+
      setPokemonNames(arr)
     }
-
     fetchPokemonNames()
   }, [])
 
+  const handleSubmit = () => {
+    setNameToSeach(value)
+    setValue("")
+  }
+
   return (
-    <>
+    <div className="pokemonPage">
     <h1>Pokemon Info</h1>
+    <p>Here you can search the PokeApi database to get info on your favorite pokemon.
+    Enter the name of the pokemon you wish to look up. </p>
+    <br/>
 {nameToSearch === "" && searchOk ?(
   <>
-    
-    <p>Here you can search the PokeApi database to get info on your favorite pokemon.<br/>
-    Enter the name of the pokemon you wish to look up. </p>
-    <Stack spacing={2} width="250px">
     <Autocomplete
-      /* disablePortal*/
-      id="pokemonSearchbar"
+      options={pokemonNames}
+      sx={
+        {width: 250 }
+      }
+      renderInput={(params) => <TextField {...params} 
+      label="Pokemon name" />}
+      noOptionsText={"No pokemon with that name could be found"}
+      value={value}
+      onChange={(e, newValue) => setValue(newValue)}
+      //TODO fråga gänget* varför newValue?
+    />
+          <br/>
+    <Button 
+    onClick={handleSubmit}>
+      Search</Button>
+   
+    </>)
+    :
+    (<>
+    <h4>Search another pokemon:</h4>
+    <Autocomplete
       options={pokemonNames}
       sx={{ width: 300 }}
       renderInput={(params) => <TextField {...params} label="Pokemon name" />}
       noOptionsText={"No pokemon with that name could be found"}
       value={value}
-      onChange={(e) => setValue(e.target.value)}
+      onChange={(e, newValue) => setValue(newValue)}
     />
-    </Stack>
-{/* 
-      <MyForm 
-      placeholder = "Ex: Pikachu or Ditto"
-      setAnswer={setNameToSeach}></MyForm>
-      <br/> */}
-      
-    </>)
-    :
-    nameToSearch !== "" && searchOk ?
-    (<>
-    <p>Search another pokemon</p>
-      <MyForm 
-      placeholder = "Ex: Eevee or Ditto"
-      setAnswer={setNameToSeach}></MyForm>
+    <br/>
+     <Button 
+    onClick={handleSubmit}>
+      Search</Button>
+  
       <br/>
   <h1 style={{ color: "pink" }}>{pokemon.name}!</h1>
       <Image fluid src={pokemon.image}></Image>
@@ -136,20 +156,8 @@ const PokemonInfo = () => {
         </thead>
       </Table>
       </>)
-      :
-      (
-        <>
-        <p>No pokemon with that name came up? try again</p>
-      <MyForm 
-      placeholder = "Ex: Eevee or Ditto"
-      setAnswer={setNameToSeach}></MyForm>
-      <br/>
-      
-        </>
-
-      )
     }
-    </>
+    </div>
   )
 };
 

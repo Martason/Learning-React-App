@@ -1,7 +1,4 @@
 
-*{
-
-}
 
 .app {
   padding-top: 2rem;
@@ -18,10 +15,21 @@
   text-align: center;
   padding: 30px;
 }
+.pokemonPage{
+  background-color: #3e486282;
+  border: pink solid 2px;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  padding: 20px;
+  
+}
  .table {
---bs-table-color: #fff;
+--bs-table-color:  white;
 --bs-table-bg: rgb(0 0 0 / 8%);
---bs-table-border-color: #553954;
+--bs-table-border-color: pink;
 --bs-table-striped-bg: #2c3034;
 --bs-table-striped-color: #fff;
 --bs-table-active-bg: #373b3e;
@@ -32,11 +40,11 @@
 
 
   .btn-primary {
-    --bs-btn-color: #fff;
+    --bs-btn-color:  #061c47;
     --bs-btn-bg: #fd0db8;
-    --bs-btn-border-color: #c32c8e;
-    --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #a6c0e5;
+    --bs-btn-border-color:  #061c47;
+    --bs-btn-hover-color: #fd0db8;
+    --bs-btn-hover-bg: #061c47;
     --bs-btn-hover-border-color: #0a58ca;
     --bs-btn-focus-shadow-rgb: 49,132,253;
     --bs-btn-active-color: #fff;
@@ -47,6 +55,8 @@
     --bs-btn-disabled-bg: #0d6efd;
     --bs-btn-disabled-border-color: #0d6efd;
 }
+
+
 
 .logo {
   animation: App-logo-spin infinite 20s linear;

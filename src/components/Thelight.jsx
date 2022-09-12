@@ -29,7 +29,7 @@ const TheLight = () => {
         <br />
         <br />
         <p>
-        In the future I would like to hook this up with my arduino<br/> and actually let the user light a
+        In the future I would like to hook this up with my arduino and actually let the user light a
         lamp in my house.
         <br />
         <br />

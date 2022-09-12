@@ -17,8 +17,8 @@ const Home = ({ name, setName }) => {
         <h1> Hi {name}!</h1>
           <p>
             My name is Märta and on this webbapp I crash and burn to learn
-            react. <br/> It's quite the mess I know, but hopefully I learn some cool
-            trixs to bring to my next,<br/> more coherent project
+            react. It's quite the mess I know, but hopefully I learn some cool
+            trixs to bring to my next, more coherent project
             <br></br>
             <br></br>
             Please have a look around
