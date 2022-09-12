@@ -10,9 +10,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   const [todos, setTodos] = useState([]);
   const [name, setName] = useState([]);
-  const [pokemonNames, setPokemonNames] = useState([]);
+  /* const [pokemonNames, setPokemonNames] = useState([]); */
 
-  useEffect(() => {
+ /*  useEffect(() => {
     const fetchPokemonNames = async () => {
       let url;
       let count;
@@ -30,16 +30,19 @@ function App() {
       const pokemonData = await fetch(url).then((response) =>
         response.json()
       );
-
-     setPokemonNames(pokemonData.results.map((item) => item.name))
+  console.log(pokemonData)
+  const arr = pokemonData.results.map((item) => item.name)
+  console.log(arr)
+     setPokemonNames(arr)
     }
 
     fetchPokemonNames()
-  }, [])
+  }, []) */
 
   return (
   
     <div className="app">
+      
       <Navbar />
       <div className="component">
         <Routes>
@@ -58,10 +61,11 @@ function App() {
           />
           <Route path="/PokemonInfo" 
             element={<PokemonInfo
-            pokemonNames = {pokemonNames} />} 
+            /* pokemonNames = {pokemonNames} */ />} 
           />
         </Routes>
       </div>
+     
     </div>
   );
 }

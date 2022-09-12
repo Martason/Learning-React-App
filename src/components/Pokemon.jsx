@@ -1,17 +1,22 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import MyForm from "./Form";
 import Table from "react-bootstrap/Table";
 import Image from "react-bootstrap/Image";
+import {Stack, Autocomplete, TextField} from '@mui/material'
+import {Box} from "@mui/system"
+
 //TODO Present 404 to the user in a neat way
 //TODO use the MUI autosearch function
 //TODO * Hur göra det snyggare? 
 
-const PokemonInfo = (pokemonNames) => {
+const PokemonInfo = () => {
   const [pokemon, setPokemon] = useState([]);
   const [nameToSearch, setNameToSeach] = useState("");
   const [searchOk, setSearchOk] = useState(true);
+  const [pokemonNames, setPokemonNames] = useState([]);
+  const [value, setValue] = useState("");
+  console.log(value)
 
-  console.log(pokemonNames)
 
   useEffect(() => {
 
@@ -42,6 +47,32 @@ const PokemonInfo = (pokemonNames) => {
     fetchData();
   }, [nameToSearch]);
 
+  useEffect(() => {
+    const fetchPokemonNames = async () => {
+      let url;
+      let count;
+  
+      url = new URL("https://pokeapi.co");
+      url.pathname = "/api/v2/pokemon";
+  
+      const countData = await fetch(url).then((response) =>
+        response.json()
+      );
+
+      count = countData.count;
+      url.searchParams.set("limit", count);
+  
+      const pokemonData = await fetch(url).then((response) =>
+        response.json()
+      );
+  console.log(pokemonData)
+  const arr = pokemonData.results.map((item) => item.name)
+  console.log(arr)
+     setPokemonNames(arr)
+    }
+
+    fetchPokemonNames()
+  }, [])
 
   return (
     <>
@@ -51,10 +82,23 @@ const PokemonInfo = (pokemonNames) => {
     
     <p>Here you can search the PokeApi database to get info on your favorite pokemon.<br/>
     Enter the name of the pokemon you wish to look up. </p>
+    <Stack spacing={2} width="250px">
+    <Autocomplete
+      /* disablePortal*/
+      id="pokemonSearchbar"
+      options={pokemonNames}
+      sx={{ width: 300 }}
+      renderInput={(params) => <TextField {...params} label="Pokemon name" />}
+      noOptionsText={"No pokemon with that name could be found"}
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+    />
+    </Stack>
+{/* 
       <MyForm 
       placeholder = "Ex: Pikachu or Ditto"
       setAnswer={setNameToSeach}></MyForm>
-      <br/>
+      <br/> */}
       
     </>)
     :
