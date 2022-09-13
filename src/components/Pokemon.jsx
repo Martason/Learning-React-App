@@ -14,6 +14,7 @@ array={pokemonNames}
 handleSubmit={setNameToSeach}
 /> */}
 
+
 const PokemonInfo = () => {
   const [pokemon, setPokemon] = useState([]);
   const [nameToSearch, setNameToSeach] = useState("");
@@ -69,7 +70,7 @@ const PokemonInfo = () => {
         response.json()
       );
 
-      const arr = pokemonData.results.map((item) => firstLetterToUpper(item))
+      const arr = pokemonData.results.map((item) => firstLetterToUpper(item.name))
 
      setPokemonNames(arr)
     }
