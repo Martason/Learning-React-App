@@ -40,7 +40,7 @@ const PokemonInfo = () => {
       // Gör om Abilities array till att endast innehålla namnet på abilitis (fortfarande en array)
       const pokemonAbilitiesName = data.abilities.map((arr) => arr.ability.name)//TODO *
 
-      const pokemonObj = {
+      const pokemon = {
         name: data.name.charAt(0).toUpperCase() + data.name.slice(1),//TODO *
         height: data.height,
         weight: data.weight,
@@ -50,7 +50,7 @@ const PokemonInfo = () => {
         abilities: pokemonAbilitiesName.map((item) => item.charAt(0).toUpperCase() + item.slice(1)).join(", "), //TODO *
         base_experience: data.base_experience,
       };
-      setPokemon(pokemonObj);
+      setPokemon(pokemon);
     };
     fetchData();
   }, [nameToSearch]);
