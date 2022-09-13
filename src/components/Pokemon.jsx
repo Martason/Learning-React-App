@@ -5,17 +5,14 @@ import Table from "react-bootstrap/Table";
 import Image from "react-bootstrap/Image";
 import {Autocomplete, TextField} from '@mui/material'
 import Button from 'react-bootstrap/Button';
+import Utils from "./utils"
 
 import MyAutocomplete from "./MyAutocomplete";
+import firstLetterToUpper from "./utils";
 {/* <MyAutocomplete
 array={pokemonNames}
 handleSubmit={setNameToSeach}
 /> */}
-
-//TODO style
-//TODO * cleaner code?
-// Util .charAt(0).toUpperCase() + data.name.slice(1)
-//TODO move to another component
 
 const PokemonInfo = () => {
   const [pokemon, setPokemon] = useState([]);
@@ -37,17 +34,15 @@ const PokemonInfo = () => {
       setSearchOk(response.ok);
 
       const data = await response.json();
-      // Gör om Abilities array till att endast innehålla namnet på abilitis (fortfarande en array)
-      const pokemonAbilitiesName = data.abilities.map((arr) => arr.ability.name)//TODO *
+      const pokemonAbilitiesName = data.abilities.map((arr) => arr.ability.name)
 
       const pokemon = {
-        name: data.name.charAt(0).toUpperCase() + data.name.slice(1),//TODO *
+        name: firstLetterToUpper(data.name),
         height: data.height,
         weight: data.weight,
         image: data.sprites.other["official-artwork"].front_default,
-        type: data.types.map((arr) => arr.type.name).join(" / "),//TODO *
-        // Gör om Abilities array till en string OCH ändrar till stor bokstav på varje ability
-        abilities: pokemonAbilitiesName.map((item) => item.charAt(0).toUpperCase() + item.slice(1)).join(", "), //TODO *
+        type: data.types.map((arr) => arr.type.name).join(" / "),
+        abilities: pokemonAbilitiesName.map((item) => firstLetterToUpper(item)).join(", "),
         base_experience: data.base_experience,
       };
       setPokemon(pokemon);
@@ -74,7 +69,7 @@ const PokemonInfo = () => {
         response.json()
       );
 
-  const arr = pokemonData.results.map((item) => item.name.charAt(0).toUpperCase() + item.name.slice(1))//TODO * move to app.js? how?
+      const arr = pokemonData.results.map((item) => firstLetterToUpper(item))
 
      setPokemonNames(arr)
     }
@@ -104,13 +99,12 @@ const PokemonInfo = () => {
       noOptionsText={"No pokemon with that name could be found"}
       value={value}
       onChange={(e, newValue) => setValue(newValue)}
-      //TODO fråga gänget* varför newValue?
     />
           <br/>
     <Button 
     onClick={handleSubmit}>
-      Search</Button>
-   
+      Search
+    </Button>
     </>)
     :
     (<>
@@ -127,7 +121,6 @@ const PokemonInfo = () => {
      <Button 
     onClick={handleSubmit}>
       Search</Button>
-  
       <br/>
   <h1>{pokemon.name}!</h1>
       <Image fluid src={pokemon.image}></Image>
