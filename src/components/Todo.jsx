@@ -2,17 +2,16 @@ import React, { useEffect } from "react";
 
 const Todo = ({ todos, setTodos }) => {
   useEffect(() => {
-    if(todos.length === 0){
+    if (todos.length === 0) {
       createTodoAtIndex(todos.length - 1);
-    } 
-    else{
-    setTimeout(() => {
-      document.forms[0].elements[todos.length - 1].focus();
-    }, 0)}
+    } else {
+      setTimeout(() => {
+        document.forms[0].elements[todos.length - 1].focus();
+      }, 0);
+    }
   }, []);
 
   function handleKeyDown(e, i) {
-   
     if (e.key === "Enter" && todos[i].content !== "") {
       createTodoAtIndex(i);
     }
@@ -58,7 +57,7 @@ const Todo = ({ todos, setTodos }) => {
 
   return (
     <>
-    <h1>Todolist</h1>
+      <h1>Todolist</h1>
       <h4>Whats needs to bee done?</h4>
       <form className="todo-list component-frame">
         <ul>
